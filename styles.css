@@ -31,48 +31,8 @@ h1 {
     margin-bottom: 30px;
 }
 
-.input-section {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 30px;
-}
-
-#url-input {
-    flex: 1;
-    padding: 12px 16px;
-    font-size: 1rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-#url-input:focus {
-    border-color: #333;
-}
-
-#generate-btn {
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: 500;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-#generate-btn:hover {
-    background-color: #555;
-}
-
-#generate-btn:active {
-    background-color: #222;
-}
-
 .qr-section {
-    min-height: 200px;
+    min-height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,4 +50,10 @@ h1 {
 #qr-placeholder {
     color: #999;
     font-size: 0.9rem;
+}
+
+.instruction {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 20px;
 }

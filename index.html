@@ -3,27 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
+    <title>Scan to Access Resources</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>QR Code Generator</h1>
-
-        <div class="input-section">
-            <input
-                type="text"
-                id="url-input"
-                placeholder="Enter URL or text..."
-                autocomplete="off"
-            >
-            <button id="generate-btn">Generate</button>
-        </div>
+        <h1>Scan to Access Resources</h1>
 
         <div class="qr-section">
             <div id="qr-code"></div>
-            <p id="qr-placeholder">Enter a URL above to generate a QR code</p>
+            <p id="qr-placeholder">Loading QR code...</p>
         </div>
+
+        <p class="instruction">Scan this QR code with your phone camera</p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
