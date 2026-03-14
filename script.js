@@ -6,21 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const targetUrl = 'https://drive.google.com/drive/folders/1xvVafla1E0u0KHYhafDKcC_oT_UWaWTi';
 
     // Generate QR code on page load
-    QRCode.toCanvas(targetUrl, {
+    new QRCode(qrCodeDiv, {
+        text: targetUrl,
         width: 250,
-        margin: 2,
-        color: {
-            dark: '#333333',
-            light: '#ffffff'
-        }
-    }, function(error, canvas) {
-        if (error) {
-            console.error(error);
-            return;
-        }
-
-        qrCodeDiv.appendChild(canvas);
-        qrCodeDiv.style.display = 'block';
-        placeholder.style.display = 'none';
+        height: 250,
+        colorDark: '#333333',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
     });
+
+    qrCodeDiv.style.display = 'block';
+    placeholder.style.display = 'none';
 });
