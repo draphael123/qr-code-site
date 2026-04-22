@@ -6,7 +6,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    background-color: #f5f5f5;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -17,49 +17,139 @@ body {
 .container {
     background: white;
     padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 400px;
+    max-width: 480px;
     text-align: center;
 }
 
 h1 {
-    color: #333;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 30px;
+    color: #1e293b;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 12px;
 }
 
+.description {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 28px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    background: #f1f5f9;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background: transparent;
+    color: #64748b;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    color: #3b82f6;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #3b82f6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Generate Tab */
 .qr-section {
     min-height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 #qr-code {
     display: none;
 }
 
-#qr-code canvas {
-    border-radius: 8px;
+#qr-code canvas,
+#qr-code img {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 #qr-placeholder {
-    color: #999;
+    color: #94a3b8;
     font-size: 0.9rem;
 }
 
 .instruction {
-    color: #666;
+    color: #64748b;
     font-size: 0.9rem;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
+/* Color Options */
+.color-options {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 10px;
+}
+
+.color-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.color-option label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #475569;
+}
+
+.color-option input[type="color"] {
+    width: 48px;
+    height: 48px;
+    border: 3px solid #e2e8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.color-option input[type="color"]:hover {
+    border-color: #3b82f6;
+}
+
+/* Download Section */
 .download-section {
-    margin-top: 25px;
+    margin-top: 8px;
 }
 
 .dropdown {
@@ -68,19 +158,20 @@ h1 {
 }
 
 .dropdown-btn {
-    padding: 12px 24px;
+    padding: 14px 28px;
     font-size: 1rem;
-    font-weight: 500;
-    background-color: #333;
+    font-weight: 600;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .dropdown-btn:hover {
-    background-color: #555;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .dropdown-content {
@@ -90,27 +181,143 @@ h1 {
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
-    min-width: 200px;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
-    border-radius: 8px;
+    min-width: 220px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
     overflow: hidden;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     z-index: 1;
 }
 
 .dropdown-content a {
-    color: #333;
-    padding: 12px 16px;
+    color: #334155;
+    padding: 14px 18px;
     text-decoration: none;
     display: block;
     font-size: 0.9rem;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .dropdown-content a:hover {
-    background-color: #f5f5f5;
+    background-color: #eff6ff;
+    color: #3b82f6;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+/* Scan Tab */
+.scan-section {
+    padding: 20px 0;
+}
+
+.scan-description {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+#reader {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#reader video {
+    border-radius: 12px;
+}
+
+.scan-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.scan-btn {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background: #f1f5f9;
+    color: #475569;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.scan-btn:hover {
+    border-color: #3b82f6;
+    color: #3b82f6;
+}
+
+.scan-btn.active {
+    background: #eff6ff;
+    border-color: #3b82f6;
+    color: #3b82f6;
+}
+
+#file-input {
+    display: none;
+}
+
+.scan-result {
+    display: none;
+    padding: 16px;
+    background: #f0fdf4;
+    border: 2px solid #86efac;
+    border-radius: 10px;
+    margin-top: 16px;
+}
+
+.scan-result.show {
+    display: block;
+}
+
+.scan-result-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #16a34a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.scan-result-text {
+    font-size: 0.95rem;
+    color: #166534;
+    word-break: break-all;
+    margin-bottom: 12px;
+}
+
+.copy-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.copy-btn:hover {
+    background: #16a34a;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .color-options {
+        gap: 16px;
+    }
 }

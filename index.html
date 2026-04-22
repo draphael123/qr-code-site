@@ -3,29 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scan to Access Resources</title>
+    <title>QR Code Tool</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Scan to Access Resources</h1>
+        <h1>QR Code Tool</h1>
+        <p class="description">Generate custom QR codes with your choice of colors, download in multiple formats, or scan existing QR codes from images or your camera.</p>
 
-        <div class="qr-section">
-            <div id="qr-code"></div>
-            <p id="qr-placeholder">Loading QR code...</p>
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="generate">Generate</button>
+            <button class="tab-btn" data-tab="scan">Scan</button>
         </div>
 
-        <p class="instruction">Scan this QR code with your phone camera</p>
+        <!-- Generate Tab -->
+        <div id="generate-tab" class="tab-content active">
+            <div class="qr-section">
+                <div id="qr-code"></div>
+                <p id="qr-placeholder">Loading QR code...</p>
+            </div>
 
-        <div class="download-section">
-            <div class="dropdown">
-                <button class="dropdown-btn">Download QR Code</button>
-                <div class="dropdown-content">
-                    <a href="#" id="download-png-small">PNG - Small (250px)</a>
-                    <a href="#" id="download-png-medium">PNG - Medium (500px)</a>
-                    <a href="#" id="download-png-large">PNG - Large (1000px)</a>
-                    <a href="#" id="download-png-print">PNG - Print Quality (1500px)</a>
-                    <a href="#" id="download-svg">SVG - Vector (scalable)</a>
+            <p class="instruction">Scan this QR code with your phone camera</p>
+
+            <div class="color-options">
+                <div class="color-option">
+                    <label for="fg-color">Foreground</label>
+                    <input type="color" id="fg-color" value="#333333">
+                </div>
+                <div class="color-option">
+                    <label for="bg-color">Background</label>
+                    <input type="color" id="bg-color" value="#ffffff">
+                </div>
+            </div>
+
+            <div class="download-section">
+                <div class="dropdown">
+                    <button class="dropdown-btn">Download QR Code</button>
+                    <div class="dropdown-content">
+                        <a href="#" id="download-png-small">PNG - Small (250px)</a>
+                        <a href="#" id="download-png-medium">PNG - Medium (500px)</a>
+                        <a href="#" id="download-png-large">PNG - Large (1000px)</a>
+                        <a href="#" id="download-png-print">PNG - Print Quality (1500px)</a>
+                        <a href="#" id="download-svg">SVG - Vector (scalable)</a>
+                        <a href="#" id="download-pdf">PDF - Print Template</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scan Tab -->
+        <div id="scan-tab" class="tab-content">
+            <div class="scan-section">
+                <p class="scan-description">Upload an image containing a QR code or use your camera to scan one.</p>
+
+                <div class="scan-buttons">
+                    <button class="scan-btn" id="upload-btn">Upload Image</button>
+                    <button class="scan-btn" id="camera-btn">Use Camera</button>
+                </div>
+
+                <input type="file" id="file-input" accept="image/*">
+
+                <div id="reader"></div>
+
+                <div class="scan-result" id="scan-result">
+                    <p class="scan-result-label">Decoded Result</p>
+                    <p class="scan-result-text" id="scan-result-text"></p>
+                    <button class="copy-btn" id="copy-btn">Copy to Clipboard</button>
                 </div>
             </div>
         </div>
@@ -33,6 +76,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
