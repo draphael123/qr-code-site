@@ -111,6 +111,11 @@ document.addEventListener('DOMContentLoaded', function() {
         downloadPNG(1000);
     });
 
+    document.getElementById('download-png-print').addEventListener('click', function(e) {
+        e.preventDefault();
+        downloadPNG(1500);
+    });
+
     document.getElementById('download-svg').addEventListener('click', function(e) {
         e.preventDefault();
         downloadSVG();
